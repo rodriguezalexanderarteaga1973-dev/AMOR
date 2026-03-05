@@ -1,0 +1,420 @@
+<html lang="es">
+<head>
+
+<meta charset="UTF-8">
+<title>Para mi amor ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Great+Vibes&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:linear-gradient(135deg,#ff4e50,#fc913a);
+color:white;
+text-align:center;
+overflow-x:hidden;
+min-height:100vh;
+}
+
+.container{
+padding:40px;
+}
+
+h1{
+font-family:'Great Vibes',cursive;
+font-size:65px;
+margin-top:30px;
+}
+
+#mensaje{
+margin-top:20px;
+font-size:24px;
+min-height:60px;
+padding:10px;
+}
+
+.contador{
+margin-top:30px;
+font-size:24px;
+}
+
+#tiempo{
+font-size:28px;
+margin-top:10px;
+}
+
+.galeria{
+margin-top:40px;
+display:flex;
+justify-content:center;
+flex-wrap:wrap;
+gap:25px;
+}
+
+.galeria img{
+width:220px;
+height:300px;
+object-fit:cover;
+border-radius:20px;
+box-shadow:0 10px 25px rgba(0,0,0,0.4);
+transition:0.4s;
+}
+
+.galeria img:hover{
+transform:scale(1.1);
+}
+
+button{
+margin-top:40px;
+padding:15px 30px;
+font-size:20px;
+border:none;
+border-radius:30px;
+background:white;
+color:#ff4e50;
+cursor:pointer;
+transition:0.3s;
+font-weight:600;
+}
+
+button:hover{
+transform:scale(1.1);
+}
+
+#mensajeFinal{
+font-family:'Great Vibes',cursive;
+font-size:55px;
+margin-top:40px;
+opacity:0;
+transition:1s;
+}
+
+/* CORAZONES QUE CAEN */
+
+.corazon{
+position:fixed;
+font-size:25px;
+animation:caer linear forwards;
+}
+
+@keyframes caer{
+0%{transform:translateY(-10px);opacity:1;}
+100%{transform:translateY(100vh);opacity:0;}
+}
+
+/* EXPLOSIÓN DE CORAZONES */
+
+.corazonExplosion{
+position:fixed;
+pointer-events:none;
+animation:boom 3s forwards;
+}
+
+@keyframes boom{
+0%{
+transform:scale(0);
+opacity:1;
+}
+50%{
+transform:scale(1.5);
+opacity:1;
+}
+100%{
+transform:translateY(-200px) scale(2.5);
+opacity:0;
+}
+}
+
+/* FUEGOS ARTIFICIALES */
+
+.fuego{
+position:fixed;
+width:8px;
+height:8px;
+border-radius:50%;
+pointer-events:none;
+animation:explosion 3s ease-out forwards;
+}
+
+@keyframes explosion{
+0%{
+transform:scale(1);
+opacity:1;
+}
+100%{
+transform:scale(6);
+opacity:0;
+}
+}
+
+/* SOBRE */
+
+.sobre-container{
+display:flex;
+justify-content:center;
+margin-top:80px;
+}
+
+.sobre{
+width:260px;
+height:180px;
+background:#ff4e50;
+position:relative;
+border-radius:12px;
+cursor:pointer;
+box-shadow:0 15px 35px rgba(0,0,0,0.3);
+overflow:hidden;
+}
+
+.tapa{
+position:absolute;
+width:0;
+height:0;
+border-left:130px solid transparent;
+border-right:130px solid transparent;
+border-bottom:90px solid #ff6b6b;
+top:-90px;
+left:0;
+transition:0.7s;
+z-index:2;
+}
+
+.carta{
+position:absolute;
+background:white;
+color:#333;
+width:220px;
+height:150px;
+left:20px;
+top:200px;
+border-radius:10px;
+padding:20px;
+font-size:22px;
+line-height:1.5;
+text-align:center;
+font-family:'Great Vibes',cursive;
+transition:0.7s;
+}
+
+.sobre.abierto .tapa{
+transform:rotateX(180deg);
+}
+
+.sobre.abierto .carta{
+top:15px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>❤️ Para la niña más hermosa ❤️</h1>
+
+<div id="mensaje"></div>
+
+<div class="contador">
+Llevamos juntos:
+<div id="tiempo"></div>
+</div>
+
+<div class="galeria">
+<img src="foto1.jpeg">
+<img src="foto2.jpeg">
+<img src="foto3.jpeg">
+<img src="foto4.jpeg">
+</div>
+
+<button id="botonAmor">Haz clic aquí amor ❤️</button>
+
+<div id="mensajeFinal">
+✨ Eres lo mejor que me ha pasado ✨
+</div>
+
+<div class="sobre-container">
+
+<div class="sobre" onclick="abrirCarta()">
+
+<div class="tapa"></div>
+
+<div class="carta">
+Mi amor 💖 <br><br>
+Solo quería recordarte
+lo especial que eres para mí.
+<br><br>
+Desde que llegaste a mi vida
+todo es más bonito.
+<br><br>
+Te amo muchísimo ❤️
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<audio id="musica" loop>
+<source src="musica.mp3">
+</audio>
+
+<script>// TEXTO QUE SE ESCRIBE SOLO
+
+const texto="Desde que llegaste a mi vida todo es más bonito. Cada momento contigo es especial y me haces muy feliz. Gracias por estar conmigo. Te amo muchísimo ❤️";
+
+let i=0;
+
+function escribir(){
+
+if(i<texto.length){
+
+document.getElementById("mensaje").innerHTML+=texto.charAt(i);
+
+i++;
+
+setTimeout(escribir,40);
+
+}
+
+}
+
+escribir();
+
+
+// CORAZONES QUE CAEN
+
+function crearCorazon(){
+
+const corazon=document.createElement("div");
+
+corazon.classList.add("corazon");
+
+corazon.innerHTML="❤️";
+
+corazon.style.left=Math.random()*100+"vw";
+
+corazon.style.animationDuration=(Math.random()*3+3)+"s";
+
+document.body.appendChild(corazon);
+
+setTimeout(()=>{
+corazon.remove();
+},5000)
+
+}
+
+setInterval(crearCorazon,300);
+
+
+// CONTADOR
+
+const fechaInicio=new Date("2026-01-24 4:59:30");
+
+function actualizarTiempo(){
+
+const ahora=new Date();
+
+const diferencia=ahora-fechaInicio;
+
+const dias=Math.floor(diferencia/(1000*60*60*24));
+const horas=Math.floor((diferencia/(1000*60*60))%24);
+const minutos=Math.floor((diferencia/(1000*60))%60);
+const segundos=Math.floor((diferencia/1000)%60);
+
+document.getElementById("tiempo").innerHTML=
+dias+" días "+
+horas+" horas "+
+minutos+" min "+
+segundos+" seg ❤️";
+
+}
+
+setInterval(actualizarTiempo,1000);
+
+
+// BOTÓN CON EFECTOS
+
+const boton=document.getElementById("botonAmor");
+
+boton.addEventListener("click",sorpresa);
+
+function sorpresa(){
+
+document.getElementById("musica").play();
+
+const mensaje=document.getElementById("mensajeFinal");
+
+mensaje.style.opacity=1;
+
+
+// CORAZONES DISPERSOS
+
+for(let i=0;i<60;i++){
+
+const corazon=document.createElement("div");
+
+corazon.classList.add("corazonExplosion");
+
+corazon.innerHTML="❤️";
+
+corazon.style.left=Math.random()*window.innerWidth+"px";
+corazon.style.top=Math.random()*window.innerHeight+"px";
+
+corazon.style.fontSize=(20+Math.random()*30)+"px";
+
+document.body.appendChild(corazon);
+
+setTimeout(()=>{
+corazon.remove();
+},3000);
+
+}
+
+
+// FUEGOS ARTIFICIALES
+
+for(let i=0;i<80;i++){
+
+const fuego=document.createElement("div");
+
+fuego.classList.add("fuego");
+
+fuego.style.left=Math.random()*window.innerWidth+"px";
+fuego.style.top=Math.random()*window.innerHeight+"px";
+
+fuego.style.background="hsl("+Math.random()*360+",100%,60%)";
+
+document.body.appendChild(fuego);
+
+setTimeout(()=>{
+fuego.remove();
+},3000);
+
+}
+
+}
+
+
+// ABRIR CARTA
+
+function abrirCarta(){
+
+const sobre=document.querySelector(".sobre");
+
+sobre.classList.toggle("abierto");
+
+}
+
+</script>
+
+</body>
+</html>
